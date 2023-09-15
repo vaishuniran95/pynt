@@ -1,0 +1,24 @@
+name: Example pynt yml 
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PYNT_CREDENTIALS: ${{ secrets.YOURPYNTID }}
+
+jobs:
+ api-security:
+  runs-on: ubuntu-latest
+
+  steps: 
+  - name: install pynt cli
+    run: | 
+        python3 -m pip install --upgrade pyntcli 
+  
+  - name: get test collection 
+    run: | 
+        curl https://raw.githubusercontent.com/vaishuniran95/pynt/main/sample/test.postman_collection.json -o test.postman_collection.json
+  - name: run pynt with newman integration 
+    run: | 
+        pynt newman --collection test.postman_collection.json --reporters
