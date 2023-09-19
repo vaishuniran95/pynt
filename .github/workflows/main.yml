@@ -18,7 +18,7 @@ jobs:
   
   - name: get test collection 
     run: | 
-        curl https://github.com/vaishuniran95/pynt/blob/main/sample/test.postman_collection.json -o test.postman_collection.json
+         https://github.com/vaishuniran95/pynt/blob/main/sample/test.postman_collection.json -o test.postman_collection.json
   - name: run pynt with newman integration 
     run: | 
         pynt newman --collection test.postman_collection.json --reporters
